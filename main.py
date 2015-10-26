@@ -1,6 +1,10 @@
 __author__ = 'Kaike'
 from syntactic_analyser import *
+from lexic_analyser import *
 
-
-sa = SyntaxAnalyser()
+la = lexicAnalyser()
+filename = "Code.txt"
+code = open(filename,'r')
+la._setCode(code.read())
+sa = SyntaxAnalyser(la, 'actions - simple gramar.csv', 'rules - simple gramar.csv', 6)
 

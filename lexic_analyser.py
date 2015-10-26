@@ -13,7 +13,7 @@ class lexicAnalyser():
 
     def _setCode(self, _code):
         self.code = _code
-        if self.code.__len__ == 0:
+        if len(self.code) == 0:
             self.nextChar = ""
         else:
             self.nextChar = " "

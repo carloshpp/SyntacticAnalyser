@@ -3,11 +3,12 @@ from tokens import *
 
 class SyntaxAnalyser():
 
-    def __init__(self):
+    def __init__(self, lexicAnalyser):
         self.actionTable = []
         self.rules = []
         self.buildActionTable()
         self.buildRulesTable()
+		self.lexicAnalyser = lexicAnalyser
 
 
     def analyse(self, chain):

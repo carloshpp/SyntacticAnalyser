@@ -210,6 +210,10 @@ class lexicAnalyser():
                 self.nextChar = self.readChar()
                 token = tokens.Tokens.NOT.value
                 print '! {0} {1}'.format(token, tokenSec)
+            elif self.nextChar == '$':
+                self.nextChar = self.readChar()
+                token = tokens.Tokens.DOLAR.value
+                print '! {0} {1}'.format(token, tokenSec)
             else:
                 token = tokens.Tokens.UNKNOWN.value
 

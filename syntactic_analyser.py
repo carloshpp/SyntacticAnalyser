@@ -15,25 +15,27 @@ class SyntaxAnalyser():
 
 
 
-    def analyse(self, chain):
+    def analyse(self):
         self.stack = []
         q = 0
         self.stack.append(0)
-        a = Tokens[self.lexicAnalyser.nextToken()]
+        a = possible_tokens_ids[self.lexicAnalyser.nextToken()-1]
+        print(self.stack)
 
         while True:
-            p = self.action[q][a]
+            p = self.actionTable[q][a]
             if p > 0:
                 self.stack.append(p)
-                a = Tokens[chain[self.lexicAnalyser.nextToken()]]
+                a = possible_tokens_ids[self.lexicAnalyser.nextToken()-1]
             elif p < 0:
-                for i in range(1, self.rules[0][-p]):
+                for i in range(0, int(self.rules[-p][0])):
                     self.stack.pop()
-                self.stack.append(self.actionTable[self.stack[len(self.stack)-1]][self.rules[1][-p]])
+                self.stack.append(self.actionTable[self.stack[len(self.stack)-1]][self.rules[-p][1]])
             else:
                 print('SyntaxError')
-                pass
-            q = self.stack.top()
+                break
+            q = self.stack.__getitem__(self.stack.__len__()-1)
+            print(self.stack)
 
             if q == self.finalState:
                 print('Done!')

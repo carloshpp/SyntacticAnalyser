@@ -14,7 +14,6 @@ class SyntaxAnalyser():
         self.lexicAnalyser = lexicAnalyser
 
 
-
     def analyse(self):
         self.stack = []
         q = 0

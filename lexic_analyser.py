@@ -1,6 +1,13 @@
 __author__ = 'Kaike'
 import tokens
 
+
+class constant():
+    def __init__(self):
+        cVal = ''
+        sVal = ""
+        nVal = 0
+
 # add comments do the project
 class lexicAnalyser():
 
@@ -220,6 +227,8 @@ class lexicAnalyser():
         return token
 
 
+
+
     def isSpace(self, char):
         return " " == char
 
@@ -240,4 +249,35 @@ class lexicAnalyser():
             return True
         except ValueError:
             return False
+
+    def addCharConst(self, c):
+        const = constant()
+        const.cVal = c
+        self.Consts.append(const)
+        return len(self.Consts)
+
+
+    def addIntConst(self, n):
+        const = constant()
+        const.nVal = n
+        self.Consts.append(const)
+        return len(self.Consts)
+
+    def addStringConst(self, s):
+        const = constant()
+        const.sVal = s
+        self.Consts.append(const)
+        return len(self.Consts)
+
+
+    def getCharConst(self, n):
+        return self.Consts.__getitem__(n).cVal;
+
+
+    def getIntConst(self, n):
+        return self.Consts.__getitem__(n).nVal
+
+
+    def getStringConst(self, n):
+        return self.Consts.__getitem__(n).sVal
 
